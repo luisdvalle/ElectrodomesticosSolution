@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace LuisDelValle.WinningSolution.WebApi.Services
 {
-    [MongoDatabase("appDb")]
+    [MongoDatabase("appdb")]
     public class AppDbContext : DbContext
     {
         public DbSet<Item> Items { get; set; }
