@@ -39,7 +39,7 @@ namespace LuisDelValle.WinningSolution.WebApi
             }
 
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
