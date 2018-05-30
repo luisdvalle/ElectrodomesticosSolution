@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Compile Remove="Views\Item\**" />
+    <Content Remove="Views\Item\**" />
+    <EmbeddedResource Remove="Views\Item\**" />
+    <None Remove="Views\Item\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ItemController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

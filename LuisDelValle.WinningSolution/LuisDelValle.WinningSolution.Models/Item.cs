@@ -1,6 +1,6 @@
 ﻿namespace LuisDelValle.WinningSolution.Models
 {
-    public abstract class Item
+    public class Item
     {
         public virtual int Id { get; set; }
         public virtual string Sku { get; set; }
