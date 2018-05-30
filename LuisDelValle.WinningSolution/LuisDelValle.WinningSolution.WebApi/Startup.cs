@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LuisDelValle.WinningSolution.Abstractions;
+using LuisDelValle.WinningSolution.WebApi.Models;
 using LuisDelValle.WinningSolution.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace LuisDelValle.WinningSolution.WebApi
 {
@@ -27,7 +23,7 @@ namespace LuisDelValle.WinningSolution.WebApi
             services.AddMvc();
 
             // Registering services in DI container.
-            services.AddScoped<IDataService<Item>, DataService<Item>>();
+            services.AddScoped<IDataService<Product>, DataService<Product>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

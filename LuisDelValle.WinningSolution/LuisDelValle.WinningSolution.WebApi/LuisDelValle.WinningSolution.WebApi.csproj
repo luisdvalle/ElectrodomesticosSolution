@@ -15,11 +15,18 @@
   <ItemGroup>
     <PackageReference Include="Blueshift.EntityFrameworkCore.MongoDb" Version="2.1.0-preview1-t006595f7f" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LuisDelValle.WinningSolution.Abstractions\LuisDelValle.WinningSolution.Abstractions.csproj" />
+    <ProjectReference Include="..\LuisDelValle.WinningSolution.Models\LuisDelValle.WinningSolution.Models.csproj" />
   </ItemGroup>
 
 </Project>

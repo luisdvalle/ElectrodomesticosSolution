@@ -5,14 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LuisDelValle.WinningSolution.Abstractions\LuisDelValle.WinningSolution.Abstractions.csproj" />
+    <ProjectReference Include="..\LuisDelValle.WinningSolution.WebApi\LuisDelValle.WinningSolution.WebApi.csproj" />
   </ItemGroup>
 
 </Project>
