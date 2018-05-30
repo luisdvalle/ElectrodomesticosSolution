@@ -1,0 +1,42 @@
+﻿@model ProductsViewModel
+
+<h2>All Products with the minimum price</h2>
+
+<div>
+    <p>@Model.Message</p>
+    <p>Number of products: @Model.NumberProducts</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Sku</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Fantastic - Value</th>
+                <th scope="col">Fantastic - Type</th>
+                <th scope="col">Fantastic - Name</th>
+                <th scope="col">Rating - Name</th>
+                <th scope="col">Rating - Type</th>
+                <th scope="col">Rating - Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+            <tr>
+                <th scope="row">@product.Id</th>
+                <td>@product.Sku</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Attribute.fantastic.value</td>
+                <td>@product.Attribute.fantastic.type</td>
+                <td>@product.Attribute.fantastic.name</td>
+                <td>@product.Attribute.rating.name</td>
+                <td>@product.Attribute.rating.type</td>
+                <td>@product.Attribute.rating.value</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

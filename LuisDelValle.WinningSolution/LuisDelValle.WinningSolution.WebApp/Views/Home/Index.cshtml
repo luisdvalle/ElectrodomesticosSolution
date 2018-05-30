@@ -1,43 +1,18 @@
-﻿@model ProductsViewModel
+﻿
 
 <h2>Home Page</h2>
 
-<form asp-action="All" asp-controller="Home"  method="post">
+<form asp-action="GetAll" asp-controller="Item" method="post">
     <label>Get all products:</label>
     <input type="submit" value="Submit" />
 </form>
-<br/>
+<br />
 
-<div>
-    <p>@Model.Message</p>
-    <p>Number of products: @Model.NumberProducts</p>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Sku</th>
-            <th>Name</th>
-            <th>Fantastic - Value</th>
-            <th>Fantastic - Type</th>
-            <th>Fantastic - Name</th>
-            <th>Rating - Name</th>
-            <th>Rating - Type</th>
-            <th>Rating - Value</th>
-        </tr>
-        @foreach (var product in Model.Products)
-        {
-            <tr>
-                <td>@product.Id</td>
-                <td>@product.Sku</td>
-                <td>@product.Name</td>
-                <td>@product.Attribute.fantastic.value</td>
-                <td>@product.Attribute.fantastic.type</td>
-                <td>@product.Attribute.fantastic.name</td>
-                <td>@product.Attribute.rating.name</td>
-                <td>@product.Attribute.rating.type</td>
-                <td>@product.Attribute.rating.value</td>
-            </tr>
-        }
-    </table>
-</div>
+<form asp-action="GetMinPrice" asp-controller="Item" method="post">
+    <label>Get minimum price:</label>
+    <input type="submit" value="Submit" />
+</form>
+<br />
+
 
 
