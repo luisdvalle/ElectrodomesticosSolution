@@ -2,8 +2,8 @@
 {
     public class Rating
     {
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public double Value { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public double value { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Attribute
     {
-        public Fantastic Fantastic { get; set; }
-        public Rating Rating { get; set; }
+        public Fantastic fantastic { get; set; }
+        public Rating rating { get; set; }
     }
 }

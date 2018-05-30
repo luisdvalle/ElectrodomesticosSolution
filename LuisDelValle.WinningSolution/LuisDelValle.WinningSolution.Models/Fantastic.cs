@@ -2,8 +2,8 @@
 {
     public class Fantastic
     {
-        public bool Value { get; set; }
-        public int Type { get; set; }
-        public string Name { get; set; }
+        public bool value { get; set; }
+        public int type { get; set; }
+        public string name { get; set; }
     }
 }
