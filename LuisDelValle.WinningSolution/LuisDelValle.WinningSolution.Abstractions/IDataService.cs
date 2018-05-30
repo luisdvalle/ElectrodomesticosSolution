@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace LuisDelValle.WinningSolution.WebApi.Services
+namespace LuisDelValle.WinningSolution.Abstractions
 {
     public interface IDataService<T>
     {
