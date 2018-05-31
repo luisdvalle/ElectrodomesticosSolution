@@ -2,10 +2,10 @@
 Rest service built in .Net Core 2.0 that returns JSON formatted data from a Mongo collection of Products 
 
 ## Capabilities:
-i.   Connects to the mongo collection to retrieve results.
-ii.  Can filter the product set based on price, min / max
-iii. Can filter the product set based on the fantastic attribute
-iv. Can filter the product set based on the rating attribute min / max
+* Connects to the mongo collection to retrieve results.
+* Can filter the product set based on price, min / max
+* Can filter the product set based on the fantastic attribute
+* Can filter the product set based on the rating attribute min / max
 
 ## Structure of this solution
 
