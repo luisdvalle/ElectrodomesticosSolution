@@ -12,9 +12,9 @@ namespace LuisDelValle.WinningSolution.WebApi.Services
         private AppDbContext _dbContext;
         private DbSet<T> _dbSet;
 
-        public DataService()
+        public DataService(AppDbContext dbContext)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
         }
 

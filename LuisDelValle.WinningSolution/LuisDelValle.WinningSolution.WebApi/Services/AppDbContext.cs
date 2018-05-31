@@ -19,16 +19,5 @@ namespace LuisDelValle.WinningSolution.WebApi.Services
             : base(appDbContextOptions)
         {
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            var connectionString = "mongodb://localhost";
-            var mongoUrl = new MongoUrl(connectionString);
-
-            MongoClientSettings settings = MongoClientSettings.FromUrl(mongoUrl);
-
-            MongoClient mongoClient = new MongoClient(settings);
-            options.UseMongoDb(mongoClient);
-        }
     }
 }
