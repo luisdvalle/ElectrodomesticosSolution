@@ -12,10 +12,17 @@ namespace LuisDelValle.WinningSolution.WebApi.Services
         private AppDbContext _dbContext;
         private DbSet<T> _dbSet;
 
-        public DataService(AppDbContext dbContext)
+        public DataService(AppDbContext dbContext, DbSet<T> dbSet = null)
         {
             _dbContext = dbContext;
-            _dbSet = _dbContext.Set<T>();
+            if (dbSet == null)
+            {
+                _dbSet = _dbContext.Set<T>();
+            }
+            else
+            {
+                _dbSet = dbSet;
+            }
         }
 
         public void Add(T item)
@@ -36,7 +43,7 @@ namespace LuisDelValle.WinningSolution.WebApi.Services
 
         public IEnumerable<T> Query(Expression<Func<T, bool>> predicate)
         {
-            return _dbSet.Where(predicate);
+            return _dbSet.Where(predicate).ToList();
         }
     }
 }

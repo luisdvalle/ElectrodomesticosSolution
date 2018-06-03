@@ -8,7 +8,7 @@ namespace LuisDelValle.WinningSolution.WebApi.Services
     [MongoDatabase("appdb")]
     public class AppDbContext : DbContext
     {
-        public DbSet<Product> Items { get; set; }
+        public virtual DbSet<Product> Items { get; set; }
 
         public AppDbContext()
             : this(new DbContextOptions<AppDbContext>())

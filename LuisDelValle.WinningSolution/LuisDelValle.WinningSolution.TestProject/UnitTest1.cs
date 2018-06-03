@@ -1,69 +1,86 @@
-using LuisDelValle.WinningSolution.Abstractions;
+using AutoFixture;
 using LuisDelValle.WinningSolution.WebApi.Models;
 using LuisDelValle.WinningSolution.WebApi.Services;
 using Microsoft.EntityFrameworkCore;
-using Mongo2Go;
 using MongoDB.Driver;
 using Moq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace LuisDelValle.WinningSolution.TestProject
 {
-    //public class DatabaseFixture
-    //{
-    //    private AppDbContext _dbContext;
-    //    public DatabaseFixture()
-    //    {
-    //        var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-    //        optionsBuilder.UseInMemoryDatabase("TestDb");
-    //        _dbContext = new AppDbContext(optionsBuilder.Options);
-
-    //        // Adding sample data
-    //        _dbContext.Items.Add(new Product
-    //        {
-    //            Id = 1, name = "Test Name", price = 50.1, sku = "Sku Test",
-    //            attribute = new Models.Attribute
-    //            {
-    //                fantastic = new Models.Fantastic { name = "Test Name", type = 1, value = true },
-    //                rating = new Models.Rating { name = "Test Name", type = "1", value = 1.5 }
-    //            }
-    //        });
-
-    //        _dbContext.Items.Add(new Product
-    //        {
-    //            Id = 1, name = "Test Name", price = 100.1, sku = "Sku Test",
-    //            attribute = new Models.Attribute
-    //            {
-    //                fantastic = new Models.Fantastic { name = "Test Name", type = 1, value = false },
-    //                rating = new Models.Rating { name = "Test Name", type = "1", value = 2.5 }
-    //            }
-    //        });
-
-    //        _dbContext.Items.Add(new Product
-    //        {
-    //            Id = 1, name = "Test Name", price = 200.1, sku = "Sku Test",
-    //            attribute = new Models.Attribute
-    //            {
-    //                fantastic = new Models.Fantastic { name = "Test Name", type = 1, value = true },
-    //                rating = new Models.Rating { name = "Test Name", type = "1", value = 3.5 }
-    //            }
-    //        });
-    //    }
-    //}
-        
-    public class UnitTest1 //: IClassFixture<DatabaseFixture>
+    public class UnitTest1
     {
+        DataService<Product> dataService;
+
+        public UnitTest1()
+        {
+            var fixture = new Fixture();
+            var products = new List<Product>
+            {
+                fixture.Build<Product>()
+                .With(p => p.Price, 500.50).Create(),
+                fixture.Build<Product>()
+                .With(p => p.Price, 250.50).Create(),
+                fixture.Build<Product>()
+                .With(p => p.Price, 250.50).Create(),
+                fixture.Build<Product>()
+                .With(p => p.Price, 300).Create()
+            }.AsQueryable();
+
+            var dbSetMock = new Mock<DbSet<Product>>();
+            dbSetMock.As<IQueryable<Product>>().Setup(m => m.Provider).Returns(products.Provider);
+            dbSetMock.As<IQueryable<Product>>().Setup(m => m.Expression).Returns(products.Expression);
+            dbSetMock.As<IQueryable<Product>>().Setup(m => m.ElementType).Returns(products.ElementType);
+            dbSetMock.As<IQueryable<Product>>().Setup(m => m.GetEnumerator()).Returns(products.GetEnumerator());
+
+            var appContextMock = new Mock<AppDbContext>();
+            appContextMock.Setup(x => x.Items).Returns(dbSetMock.Object);
+
+            dataService = new DataService<Product>(appContextMock.Object, dbSetMock.Object);
+        }
+
         [Fact]
-        public void Test1()
+        public void Query_GetAllProductsWithMaxPrice__Returns1Product()
         {
             // Arrange
-            //var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            //optionsBuilder.UseInMemoryDatabase("testdb").UseMongoDb(;
 
             // Act
+            var maxPrice = dataService.GetAll().Max(p => p.Price);
+            var allProductsMaxPrice = dataService.Query(p => p.Price == maxPrice);
 
             // Assert
+            Assert.Single(allProductsMaxPrice);
+            Assert.Equal(500.50, allProductsMaxPrice.First().Price);
+        }
+
+        [Fact]
+        public void Query_GetAllProductsWithMinPrice__Returns2Product()
+        {
+            // Arrange
+
+            // Act
+            var minPrice = dataService.GetAll().Min(p => p.Price);
+            var allProductsMinPrice = dataService.Query(p => p.Price == minPrice);
+
+            // Assert
+            Assert.Equal(2, allProductsMinPrice.Count());
+            Assert.Equal(250.50, allProductsMinPrice.First().Price);
+        }
+
+        [Fact]
+        public void Query_GetAllProductsWithPrice300__Returns1Product()
+        {
+            // Arrange
+
+            // Act
+            var allProductsMinPrice = dataService.Query(p => p.Price == 300);
+
+            // Assert
+            Assert.Single(allProductsMinPrice);
+            Assert.Equal(300, allProductsMinPrice.First().Price);
         }
     }
 }

@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuisDelValle.WinningSolutio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{7C3717D5-6E32-4AC5-8D65-141F92132E99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuisDelValle.WinningSolution.Models", "LuisDelValle.WinningSolution.Models\LuisDelValle.WinningSolution.Models.csproj", "{CC4E509E-AEE0-48C6-95E8-B86E77237C7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuisDelValle.WinningSolution.Models", "LuisDelValle.WinningSolution.Models\LuisDelValle.WinningSolution.Models.csproj", "{CC4E509E-AEE0-48C6-95E8-B86E77237C7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuisDelValle.WinningSolution.Abstractions", "LuisDelValle.WinningSolution.Abstractions\LuisDelValle.WinningSolution.Abstractions.csproj", "{E704CCF0-A2DF-412A-951F-5B40148825FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuisDelValle.WinningSolution.Abstractions", "LuisDelValle.WinningSolution.Abstractions\LuisDelValle.WinningSolution.Abstractions.csproj", "{E704CCF0-A2DF-412A-951F-5B40148825FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
