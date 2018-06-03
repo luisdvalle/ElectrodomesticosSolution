@@ -14,7 +14,7 @@ namespace LuisDelValle.WinningSolution.WebApi.Models
         public string Name { get; set; }
         [BsonElement("price")]
         public double Price { get; set; }
-        [BsonElement("Attribute")]
+        [BsonElement("attribute")]
         public Attribute Attribute { get; set; }
     }
 }
