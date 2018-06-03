@@ -8,9 +8,13 @@ namespace LuisDelValle.WinningSolution.WebApi.Models
     {
         [BsonId]
         public int Id { get; set; }
-        public string sku { get; set; }
-        public string name { get; set; }
-        public double price { get; set; }
-        public Attribute attribute { get; set; }
+        [BsonElement("sku")]
+        public string Sku { get; set; }
+        [BsonElement("name")]
+        public string Name { get; set; }
+        [BsonElement("price")]
+        public double Price { get; set; }
+        [BsonElement("Attribute")]
+        public Attribute Attribute { get; set; }
     }
 }

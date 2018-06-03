@@ -30,57 +30,57 @@ namespace LuisDelValle.WinningSolution.WebApi.Controllers
         [Route("minimumprice")]
         public IEnumerable<Product> GetMinPrice()
         {
-            var minPriceValue = _dataService.GetAll().Min(p => p.price);
+            var minPriceValue = _dataService.GetAll().Min(p => p.Price);
 
-            return _dataService.Query(p => p.price == minPriceValue);
+            return _dataService.Query(p => p.Price == minPriceValue);
         }
 
         [HttpGet]
         [Route("maximumprice")]
         public IEnumerable<Product> GetMaxPrice()
         {
-            var maxPriceValue = _dataService.GetAll().Max(p => p.price);
+            var maxPriceValue = _dataService.GetAll().Max(p => p.Price);
 
-            return _dataService.Query(p => p.price == maxPriceValue);
+            return _dataService.Query(p => p.Price == maxPriceValue);
         }
 
         [HttpGet]
         [Route("filterprice/{price}")]
         public IEnumerable<Product> GetFilterPrice(double price)
         {
-            return _dataService.Query(p => p.price == price);
+            return _dataService.Query(p => p.Price == price);
         }
 
         [HttpGet]
         [Route("fantastic/{value}")]
         public IEnumerable<Product> GetFantasticFilter(bool value)
         {
-            return _dataService.Query(p => p.attribute.fantastic.value == value);
+            return _dataService.Query(p => p.Attribute.fantastic.value == value);
         }
 
         [HttpGet]
         [Route("rating/maximumvalue")]
         public IEnumerable<Product> GetMaximumRatingValue()
         {
-            var maxRatingValue = _dataService.GetAll().Max(p => p.attribute.rating.value);
+            var maxRatingValue = _dataService.GetAll().Max(p => p.Attribute.rating.value);
 
-            return _dataService.Query(p => p.attribute.rating.value == maxRatingValue);
+            return _dataService.Query(p => p.Attribute.rating.value == maxRatingValue);
         }
 
         [HttpGet]
         [Route("rating/minimumvalue")]
         public IEnumerable<Product> GetMinimumRatingValue()
         {
-            var minRatingValue = _dataService.GetAll().Min(p => p.attribute.rating.value);
+            var minRatingValue = _dataService.GetAll().Min(p => p.Attribute.rating.value);
 
-            return _dataService.Query(p => p.attribute.rating.value == minRatingValue);
+            return _dataService.Query(p => p.Attribute.rating.value == minRatingValue);
         }
 
         [HttpGet]
         [Route("filterratingvalue/{value}")]
         public IEnumerable<Product> GetFilterRating(double value)
         {
-            return _dataService.Query(p => p.attribute.rating.value == value);
+            return _dataService.Query(p => p.Attribute.rating.value == value);
         }
     }
 }
